@@ -21,4 +21,24 @@ mixin HomeService {
       onDataFetched(modelData);
     });
   }
+
+  deleteActivityDoc(String userId, String docId) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection(AppConstants.userCollectionName)
+          .doc(userId)
+          .collection(AppConstants.userActivityCollectionName)
+          .doc(docId)
+          .delete();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /// Best approach is to delete the files also from the storage
+  /// We can delete the files using the referencing url of each file
+  /// So i did't write the code beacue it takes a long time to delete the all files
+  /// The best solution is to write the clud function to do this and the hit the function
+  /// In free resources cloud function functionality not available
 }

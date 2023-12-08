@@ -41,6 +41,8 @@ class AddActivityView extends StatelessWidget {
                 const SizedBox(height: 20),
                 AppTextFormFiled(
                   lines: 4,
+                  // textAlign: TextAlign.center,
+                  textAlignVertical: TextAlignVertical.center,
                   hintText: "Activity Name (optional)",
                   cntr: _controller.textNameController.value,
                 ),

@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../../../utils/app_config.dart';
 import '../../../utils/app_theme/AppColors.dart';
 import '../../../utils/customs/app_text/app_text.dart';
 
@@ -29,7 +28,7 @@ class AddActivityComponenets {
         InkWell(
           onTap: onPressed,
           child: Container(
-            height: AppConfig(context).height * 0.15,
+            height: type == 1 ? 120 : 90,
             padding: const EdgeInsets.all(5),
             // width: AppConfig(context).width * 0.85,
             decoration: BoxDecoration(
@@ -68,26 +67,53 @@ class AddActivityComponenets {
                       : Stack(
                           alignment: Alignment.center,
                           children: [
-                            for (int i = 0; i < files.length; i++) ...{
-                              Positioned(
-                                left: i * 22,
-                                child: Container(
-                                    height: 40,
-                                    width: 40,
-                                    padding: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        color: AppColors.background,
-                                        borderRadius: BorderRadius.circular(35),
-                                        border: Border.all(
-                                          width: 1,
-                                          color: AppColors.primaryDark,
+                            ...List.generate(
+                              files.length > 13 ? 13 : files.length,
+                              (index) {
+                                if (index == 12) {
+                                  return Positioned(
+                                    left: index * 22,
+                                    child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        padding: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            color:
+                                                AppColors.grey.withOpacity(0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(35),
+                                            border: Border.all(
+                                              width: 1,
+                                              color: AppColors.primaryDark,
+                                            )),
+                                        child: Center(
+                                          child: AppText.text(
+                                              "+${files.length - 12}"),
                                         )),
-                                    child: const Icon(
-                                      Icons.picture_as_pdf,
-                                      color: Colors.red,
-                                    )),
-                              ),
-                            }
+                                  );
+                                } else {
+                                  return Positioned(
+                                    left: index * 22,
+                                    child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        padding: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            color: AppColors.background,
+                                            borderRadius:
+                                                BorderRadius.circular(35),
+                                            border: Border.all(
+                                              width: 1,
+                                              color: AppColors.primaryDark,
+                                            )),
+                                        child: const Icon(
+                                          Icons.picture_as_pdf,
+                                          color: Colors.red,
+                                        )),
+                                  );
+                                }
+                              },
+                            )
                           ],
                         )
                   : AppText.text(

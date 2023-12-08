@@ -40,14 +40,16 @@ mixin AddActivityService {
       });
     }
     try {
+      final createsAt = DateTime.now().millisecondsSinceEpoch;
       await _firebaseInstance
           .doc(userId)
           .collection(AppConstants.userActivityCollectionName)
-          .add({
+          .doc(createsAt.toString())
+          .set({
         "images": imgUrls,
         "pdf": pdfUrls,
         "text": text,
-        "timestamp": DateTime.now().millisecondsSinceEpoch,
+        "timestamp": createsAt,
       }).then((value) {
         isSucessful = true;
       });
