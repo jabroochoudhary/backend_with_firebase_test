@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "732166865180",
+    "project_id": "connect-test-7da84",
+    "storage_bucket": "connect-test-7da84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732166865180:android:cb8a26890ef7c9b8e9fad9",
+        "android_client_info": {
+          "package_name": "com.jabrandev.user_activity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmDQVUSxzDs9pT4yBWxT4lhi31B8oRCI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
